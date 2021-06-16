@@ -41,13 +41,14 @@
   </ion-text>
 
   <h1 class="ion-text-center" [innerHTML]="currentQuestion?.question"></h1>
+
   <ion-grid>
     <ion-row>
-      <ion-col size="6" *ngFor="let response of currentQuestion?.responses">
+      <ion-col size="6" *ngFor="let answer of currentQuestion?.answers">
         <ion-button expand="full" color="transparent" [ngClass]="{
-          'good': nextQuestion && response === currentQuestion.correct_response, 
-          'bad': nextQuestion && response != currentQuestion.correct_response, 
-          'unknown': !nextQuestion}" (click)="checkResponse(response)">{{ response }}</ion-button>
+          'good': nextQuestion && answer === currentQuestion.correct_answer, 
+          'bad': nextQuestion && answer != currentQuestion.correct_answer, 
+          'unknown': !nextQuestion}" (click)="checkanswer(answer)">{{ answer }}</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

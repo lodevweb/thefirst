@@ -39,18 +39,25 @@ export class HomePage {
   }
 
   async loadQuestions(){
-    this.questions = await this.openTriviaService.getQuestions(2, this.difficult);
-    this.getCurrentQuestion();
+    try{
+      this.questions = await this.openTriviaService.getQuestions(10, this.difficult);
+      this.getCurrentQuestion();
+    } catch (error){
+      const toast = await this.toastCtrl.create({
+        message: error,
+        duration: 10000,
+      });
+      toast.present();
   }
-
+}
   getCurrentQuestion(){
     this.currentQuestion = this.questions[this.numeroQuestion];
-    this.currentQuestion.responses = [];
-    this.currentQuestion.responses.push(this.currentQuestion.correct_response);
-    for (let response of this.currentQuestion.incorrect_responses) {
-      this.currentQuestion.responses.push(response);
+    this.currentQuestion.answers = [];
+    this.currentQuestion.answers.push(this.currentQuestion.correct_answer);
+    for (let answer of this.currentQuestion.incorrect_answers) {
+      this.currentQuestion.answers.push(answer);
     }
-    this.currentQuestion.responses = this.shuffleArray(this.currentQuestion.responses);
+    this.currentQuestion.answers = this.shuffleArray(this.currentQuestion.answers);
   }
 
 
@@ -65,9 +72,9 @@ export class HomePage {
 }
 
 
-  checkResponse(response: string) {
+  checkanswer(answer: string) {
   this.nextQuestion = true;
-  if (response === this.currentQuestion.correct_response) {
+  if (answer === this.currentQuestion.correct_answer) {
     this.points++;
     console.log(this.points);
   }
