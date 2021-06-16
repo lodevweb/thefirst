@@ -15,14 +15,14 @@ export class OpenTriviaService {
         difficult: "easy",
         question: "In &quot;Fairy Tail&quot;, what is the nickname of Natsu Dragneel?",
         correct_response: "The Salamander",
-        incorrect_response: ["The Dragon Slayer", "The Dragon", "The Demon"] 
+        incorrect_responses: ["The Dragon Slayer", "The Dragon", "The Demon"] 
       }, {
         category: "Entertainment: Video Games",
         type: "boolean",
         difficult: "medium",
         question: "&quot;Return to Castle Wolfenstein&quot; was the only game of the Wolfenstein series where you don&#039;t play as William &quot;B.J.&quot; Blazkowicz.",
-        correct_responce: "False",
-        incorrect_responce: ["True"]
+        correct_response: "False",
+        incorrect_responses: ["True"]
       }
     ];
   }
