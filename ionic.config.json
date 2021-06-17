@@ -1,5 +1,7 @@
 {
   "name": "thefirst",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
