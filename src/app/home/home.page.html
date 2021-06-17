@@ -20,7 +20,7 @@
   
     <ion-item>
       <ion-label fixed>Difficulté</ion-label>
-      <ion-select [(ngModel)]="difficult">
+      <ion-select [(ngModel)]="difficulty">
         <ion-select-option value="easy">easy</ion-select-option>
         <ion-select-option value="medium">medium</ion-select-option>
         <ion-select-option value="hard">hard</ion-select-option>
@@ -32,29 +32,8 @@
     </ion-item>
 
   </ion-list>
-  <ion-button expand="full" color="light" (click) ="start()">Commencer</ion-button>
-</div>
+  <ion-button expand="full" color="light" (click) ="start()">
+    <ion-icon name="bug-outline"> </ion-icon> Commencer <ion-icon name="bug-outline"> </ion-icon></ion-button>
+  </div>
 
-<div *ngIf="beginGame" class="ion-padding">
-  <ion-text color="primary">
-    <p class="ion-text-center">Bienvenue {{ pseudo }}</p>
-  </ion-text>
-
-  <h1 class="ion-text-center" [innerHTML]="currentQuestion?.question"></h1>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6" *ngFor="let answer of currentQuestion?.answers">
-        <ion-button expand="full" color="transparent" [ngClass]="{
-          'good': nextQuestion && answer === currentQuestion.correct_answer, 
-          'bad': nextQuestion && answer != currentQuestion.correct_answer, 
-          'unknown': !nextQuestion}" (click)="checkanswer(answer)">{{ answer }}</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-   <ion-button expand="full" color="light" *ngIf="nextQuestion && !endGame" (click)="goToNextQuestion()">Question suivante</ion-button>
-
-   <ion-button expand="full" color="light" *ngIf="nextQuestion && endGame">Voir mon score</ion-button>
-</div>
   
